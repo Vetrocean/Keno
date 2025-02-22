@@ -64,7 +64,7 @@
     <div>
         <h1>Keno, Scion of Stellar Echoes</h1>
         <p>May the stars shine bright upon you every night</p>
-        <!-- Audio with initial low volume and autoplay -->
+        <!-- Audio with initial low volume -->
         <audio id="bg-audio" loop autoplay>
             <source src="videoplayback.mp3" type="audio/mp3">
             Your browser does not support the audio element.
@@ -76,10 +76,12 @@
     </div>
 
     <script>
-        // Function to play music with initial low volume
+        // Set initial volume for the audio
+        var audio = document.getElementById('bg-audio');
+        audio.volume = 0.3; // Set both volumes to the same level (0.0 to 1.0)
+
+        // Function to play music with the same volume level
         function playMusic() {
-            var audio = document.getElementById('bg-audio');
-            audio.volume = 0.1; // Lower volume (0.0 - 1.0)
             audio.play(); // Play the audio
         }
     </script>

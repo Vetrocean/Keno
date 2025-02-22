@@ -22,11 +22,7 @@
         }
         h1 {
             font-size: 2rem;
-            margin-bottom: 10px; /* Reduced space between text and button */
-        }
-        p {
-            margin-top: 0;
-            margin-bottom: 20px; /* Increased space between text lines */
+            margin-bottom: 20px;
         }
         img {
             width: 300px;
@@ -43,13 +39,18 @@
             border: 2px solid #fff;
             border-radius: 50%;
             cursor: pointer;
+            margin-top: 20px;
             outline: none;
             width: 70px;
             height: 70px;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            top: 10px;
+            left: 5px;
         }
         button:hover {
             background-color: #f0f0f0;
@@ -58,13 +59,11 @@
         /* Mobile responsiveness */
         @media (max-width: 600px) {
             button {
-                font-size: 3rem;
+                font-size: 3rem; /* Slightly smaller play button on mobile */
                 width: 60px;
                 height: 60px;
                 top: 5px;
-                left: 0; /* Reset left position on mobile */
-                margin-left: auto;
-                margin-right: auto;
+                left: -15px; /* Move the circle box slightly to the left */
             }
             button span {
                 position: absolute;
@@ -73,10 +72,10 @@
                 transform: translate(-50%, -50%);
             }
             h1 {
-                font-size: 1.5rem;
+                font-size: 1.5rem; /* Adjust text size on smaller screens */
             }
             img {
-                width: 250px;
+                width: 250px; /* Slightly smaller image on mobile */
             }
         }
     </style>

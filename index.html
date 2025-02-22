@@ -29,17 +29,18 @@
             border-radius: 10px; /* Optional, to make image edges rounded */
         }
         button {
-            padding: 10px 20px;
-            font-size: 1.2rem;
-            background-color: #4CAF50; /* Green button */
-            color: white;
-            border: none;
-            border-radius: 5px;
+            padding: 15px 30px;
+            font-size: 2rem; /* Larger font for the play symbol */
+            background-color: white; /* White background */
+            color: #000; /* Black play symbol */
+            border: 2px solid #fff; /* White border to match the background */
+            border-radius: 50%; /* Circular button */
             cursor: pointer;
             margin-top: 20px;
+            outline: none; /* Removes outline on click */
         }
         button:hover {
-            background-color: #45a049; /* Slightly darker green on hover */
+            background-color: #f0f0f0; /* Slight hover effect */
         }
     </style>
 </head>
@@ -51,19 +52,20 @@
         <h1>Welcome! Here's a nice message with music.</h1>
         <p>Enjoy the vibes!</p>
         <!-- Audio with initial low volume -->
-        <audio id="bg-audio" loop volume="0.3">
+        <audio id="bg-audio" loop>
             <source src="videoplayback.mp3" type="audio/mp3">
             Your browser does not support the audio element.
         </audio>
-        <!-- Play Button -->
-        <button onclick="document.getElementById('bg-audio').play();">Play Music</button>
+        <!-- Play Button with Play symbol -->
+        <button onclick="playMusic()">&#9654;</button> <!-- Play symbol -->
     </div>
 
     <script>
-        // Set initial volume to 30% when the page loads
-        window.onload = function() {
+        // Function to play music with initial low volume
+        function playMusic() {
             var audio = document.getElementById('bg-audio');
             audio.volume = 0.3; // Adjust volume (0.0 - 1.0)
+            audio.play(); // Play the audio
         }
     </script>
 </body>

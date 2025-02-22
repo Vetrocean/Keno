@@ -33,7 +33,7 @@
         }
         button {
             padding: 10px;
-            font-size: 5rem; /* Increased the font size of the play symbol */
+            font-size: 4rem; /* Kept the previous font size for the play symbol */
             background-color: white;
             color: #000;
             border: 2px solid #fff;
@@ -41,13 +41,16 @@
             cursor: pointer;
             margin-top: 20px;
             outline: none;
-            width: 80px; /* Increased the circle size slightly */
-            height: 80px; /* Increased the circle size slightly */
+            width: 70px; /* Reverted the circle size back to 70px */
+            height: 70px; /* Reverted the circle size back to 70px */
             display: flex;
             justify-content: center;
             align-items: center;
             margin-left: auto;
             margin-right: auto;
+            position: relative;
+            top: 10px; /* Move the button slightly down */
+            left: 5px; /* Move the button slightly to the right */
         }
         button:hover {
             background-color: #f0f0f0; /* Slight hover effect */

@@ -6,9 +6,9 @@
     <title>★ 𝙎𝙪𝙥𝙚𝙧 ★</title>
     <style>
         body {
-            background: url('Bg.gif') no-repeat center center fixed; /* Reference your uploaded GIF */
-            background-size: cover; /* Ensures the gif covers the entire screen */
-            background-attachment: fixed; /* Keeps the background fixed while scrolling */
+            background: url('Bg.gif') no-repeat center center fixed;
+            background-size: cover;
+            background-attachment: fixed;
             color: #fff;
             text-align: center;
             font-family: Arial, sans-serif;
@@ -17,7 +17,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column; /* Makes everything stack vertically */
+            flex-direction: column;
             height: 100vh;
         }
         h1 {
@@ -25,15 +25,15 @@
             margin-bottom: 20px;
         }
         img {
-            width: 300px; /* Adjust image size as needed */
-            margin-bottom: 10px; /* Slightly reduce the gap from the button */
-            border-radius: 10px; /* Optional, to make image edges rounded */
+            width: 300px;
+            margin-bottom: 10px;
+            border-radius: 10px;
             position: relative;
-            top: 30px; /* Lower the image further */
+            top: 30px;
         }
         button {
             padding: 10px;
-            font-size: 4rem; /* Kept the previous font size for the play symbol */
+            font-size: 4rem;
             background-color: white;
             color: #000;
             border: 2px solid #fff;
@@ -41,19 +41,36 @@
             cursor: pointer;
             margin-top: 20px;
             outline: none;
-            width: 70px; /* Reverted the circle size back to 70px */
-            height: 70px; /* Reverted the circle size back to 70px */
+            width: 70px;
+            height: 70px;
             display: flex;
             justify-content: center;
             align-items: center;
             margin-left: auto;
             margin-right: auto;
             position: relative;
-            top: 10px; /* Move the button slightly down */
-            left: 5px; /* Move the button slightly to the right */
+            top: 10px;
+            left: 5px;
         }
         button:hover {
-            background-color: #f0f0f0; /* Slight hover effect */
+            background-color: #f0f0f0;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 600px) {
+            button {
+                font-size: 3rem; /* Slightly smaller play button on mobile */
+                width: 60px;
+                height: 60px;
+                top: 5px; /* Less movement on mobile */
+                left: 2px; /* Adjust to look centered on mobile */
+            }
+            h1 {
+                font-size: 1.5rem; /* Adjust text size on smaller screens */
+            }
+            img {
+                width: 250px; /* Slightly smaller image on mobile */
+            }
         }
     </style>
 </head>

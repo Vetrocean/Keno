@@ -22,7 +22,11 @@
         }
         h1 {
             font-size: 2rem;
-            margin-bottom: 20px;
+            margin-bottom: 10px; /* Reduced space between text and button */
+        }
+        p {
+            margin-top: 0;
+            margin-bottom: 20px; /* Increased space between text lines */
         }
         img {
             width: 300px;
@@ -45,8 +49,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
-            top: 10px;
+            margin-top: 20px;
         }
         button:hover {
             background-color: #f0f0f0;
@@ -100,7 +103,7 @@
         // Function to play music with initial low volume
         function playMusic() {
             var audio = document.getElementById('bg-audio');
-            audio.volume = 0.3; // Adjust volume (0.0 - 1.0)
+            audio.volume = 0.1; // Lower volume (0.0 - 1.0)
             audio.play(); // Play the audio
         }
     </script>

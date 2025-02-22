@@ -15,6 +15,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column; /* Makes everything stack vertically */
             height: 100vh;
         }
         h1 {
@@ -26,13 +27,21 @@
             background: #fff;
             border-radius: 5px;
         }
+        img {
+            width: 300px; /* Adjust image size as needed */
+            margin-bottom: 20px;
+            border-radius: 10px; /* Optional, to make image edges rounded */
+        }
     </style>
 </head>
 <body>
+    <!-- Image from GitHub -->
+    <img src="Pin.png" alt="Your Image"> <!-- Reference your PNG file here -->
+
     <div>
         <h1>Welcome! Here's a nice message with music.</h1>
         <p>Enjoy the vibes!</p>
-        <audio autoplay loop>
+        <audio controls>
             <source src="videoplayback.mp3" type="audio/mp3">
             Your browser does not support the audio element.
         </audio>

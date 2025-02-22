@@ -63,7 +63,13 @@
                 width: 60px;
                 height: 60px;
                 top: 5px; /* Less movement on mobile */
-                left: 2px; /* Adjust to look centered on mobile */
+                left: -15px; /* Move the circle box slightly to the left */
+            }
+            button span {
+                position: absolute;
+                left: 50%; /* Center the play symbol */
+                top: 50%;
+                transform: translate(-50%, -50%);
             }
             h1 {
                 font-size: 1.5rem; /* Adjust text size on smaller screens */
@@ -87,7 +93,9 @@
             Your browser does not support the audio element.
         </audio>
         <!-- Play Button with Unicode ▸ symbol -->
-        <button onclick="playMusic()">&#x25B8;</button> <!-- Unicode ▸ symbol -->
+        <button onclick="playMusic()">
+            <span>&#x25B8;</span> <!-- Unicode ▸ symbol -->
+        </button>
     </div>
 
     <script>

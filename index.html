@@ -25,11 +25,13 @@
         }
         img {
             width: 300px; /* Adjust image size as needed */
-            margin-bottom: 20px;
+            margin-bottom: 10px; /* Slightly reduce the gap from the button */
             border-radius: 10px; /* Optional, to make image edges rounded */
+            position: relative;
+            top: 10px; /* Lower the image a bit */
         }
         button {
-            padding: 15px 30px;
+            padding: 10px 20px;
             font-size: 2rem; /* Larger font for the play symbol */
             background-color: white; /* White background */
             color: #000; /* Black play symbol */
@@ -38,6 +40,11 @@
             cursor: pointer;
             margin-top: 20px;
             outline: none; /* Removes outline on click */
+            width: 60px; /* Set fixed width for circle */
+            height: 60px; /* Set fixed height for circle */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         button:hover {
             background-color: #f0f0f0; /* Slight hover effect */
@@ -49,8 +56,8 @@
     <img src="Pin.png" alt="Your Image">
 
     <div>
-        <h1>Keno, Scion of Stellar Echoes</h1>
-        <p>Let your night shine brightly</p>
+        <h1>Welcome! Here's a nice message with music.</h1>
+        <p>Enjoy the vibes!</p>
         <!-- Audio with initial low volume -->
         <audio id="bg-audio" loop>
             <source src="videoplayback.mp3" type="audio/mp3">

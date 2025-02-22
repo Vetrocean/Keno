@@ -4,14 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Nice Message</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        audio {
+            margin-top: 20px;
+            background: #fff;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Boom, I don't know how I did this but it works!!!</h1>
-    <p>Have a wonderful day!</p>
-    
-    <audio autoplay loop>
-        <source src="videoplayback.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
+    <div>
+        <h1>Welcome! Here's a nice message with music.</h1>
+        <p>Enjoy the vibes!</p>
+        <audio autoplay loop>
+            <source src="videoplayback.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
 </body>
 </html>

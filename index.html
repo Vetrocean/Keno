@@ -45,4 +45,26 @@
 </head>
 <body>
     <!-- Image from GitHub -->
-    <img src
+    <img src="Pin.png" alt="Your Image">
+
+    <div>
+        <h1>Welcome! Here's a nice message with music.</h1>
+        <p>Enjoy the vibes!</p>
+        <!-- Audio with initial low volume -->
+        <audio id="bg-audio" loop volume="0.3">
+            <source src="videoplayback.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+        <!-- Play Button -->
+        <button onclick="document.getElementById('bg-audio').play();">Play Music</button>
+    </div>
+
+    <script>
+        // Set initial volume to 30% when the page loads
+        window.onload = function() {
+            var audio = document.getElementById('bg-audio');
+            audio.volume = 0.3; // Adjust volume (0.0 - 1.0)
+        }
+    </script>
+</body>
+</html>

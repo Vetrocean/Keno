@@ -28,30 +28,21 @@
             margin-bottom: 20px;
             border-radius: 10px; /* Optional, to make image edges rounded */
         }
+        button {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            background-color: #4CAF50; /* Green button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #45a049; /* Slightly darker green on hover */
+        }
     </style>
 </head>
 <body>
     <!-- Image from GitHub -->
-    <img src="Pin.png" alt="Your Image">
-
-    <div>
-        <h1>Welcome! Here's a nice message with music.</h1>
-        <p>Enjoy the vibes!</p>
-        <!-- Audio with autoplay and loop -->
-        <audio id="bg-audio" autoplay loop muted>
-            <source src="videoplayback.mp3" type="audio/mp3">
-            Your browser does not support the audio element.
-        </audio>
-    </div>
-
-    <script>
-        // Unmute audio after 1 second (or however long it takes for the page to load)
-        window.onload = function() {
-            var audio = document.getElementById('bg-audio');
-            setTimeout(function() {
-                audio.muted = false; // Unmute after the page loads
-            }, 1000);
-        }
-    </script>
-</body>
-</html>
+    <img src

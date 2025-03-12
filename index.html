@@ -98,7 +98,7 @@
             const lyrics = [
                 { time: 0, text: "Hold the dice, your turn to roll" },
                 { time: 5, text: "Before they fall through your fingers" },
-                { time: 14, text: "Not a good night to lose control" },
+                { time: 15, text: "Not a good night to lose control" },
                 { time: 19, text: "Right as the earth is unraveling" },
                 { time: 27, text: "You play with your blocks until they break" },
                 { time: 37, text: "And these walls come tumbling down" },
@@ -143,14 +143,14 @@
                     lyricsElement.style.opacity = 1; // Fade in immediately for the first lyric
                     currentIndex++;
                 } else if (currentIndex < lyrics.length && currentTime >= lyrics[currentIndex].time) {
-                    // Fade out previous lyrics and fade in new one
+                    // Fade out previous lyrics
                     lyricsElement.style.opacity = 0;
 
-                    // Wait for the fade-out transition to complete before changing text
-                    setTimeout(() => {
-                        lyricsElement.innerText = lyrics[currentIndex].text;
-                        lyricsElement.style.opacity = 1; // Fade in the new text
-                    }, 1000); // Delay for fade-out effect to complete (1 second)
+                    // Immediately switch to the next lyric without waiting
+                    lyricsElement.innerText = lyrics[currentIndex].text;
+
+                    // Fade in new lyric
+                    lyricsElement.style.opacity = 1;
 
                     currentIndex++;
                 }

@@ -96,36 +96,36 @@
         // Function to handle showing lyrics in sync with music
         function showLyrics() {
             const lyrics = [
-                { time: 0, text: "Hold the dice, your turn to roll" },
-                { time: 5, text: "Before they fall through your fingers" },
-                { time: 14, text: "Not a good night to lose control" },
-                { time: 19, text: "Right as the earth is unraveling" },
-                { time: 27, text: "You play with your blocks until they break" },
-                { time: 37, text: "And these walls come tumbling down" },
-                { time: 44, text: "Oh, they're tumbling down" },
-                { time: 52, text: "You're out of time, make your move" },
-                { time: 56, text: "Live or die while the fuse is lit and there's no turning back" },
-                { time: 66, text: "Kiss your perfect day goodbye" },
-                { time: 71, text: "Because the world is on fire" },
-                { time: 80, text: "Tuck your innocence goodnight" },
-                { time: 84, text: "You sold your friends like guns for hire" },
-                { time: 92, text: "Go play with your blocks" },
-                { time: 98, text: "And now you'll pay when these walls come tumbling down" },
-                { time: 110, text: "Oh, they're tumbling down" },
-                { time: 121, text: "Resting on a knife, you heavy souls" },
-                { time: 126, text: "With all this weight buckling down on you now" },
-                { time: 131, text: "Don't you drown and float away" },
-                { time: 135, text: "Not a good time to lose control" },
-                { time: 139, text: "Right as your marionettes cut their strings and run away" },
-                { time: 148, text: "You're out of time, make your move" },
-                { time: 152, text: "Live or die while the fuse is lit and there's no turning back" },
-                { time: 164, text: "Kiss your perfect day goodbye" },
-                { time: 169, text: "Because the world is on fire" },
-                { time: 177, text: "Tuck your innocence goodnight" },
-                { time: 182, text: "You sold your friends like guns for hire" },
-                { time: 190, text: "Go play with your blocks" },
-                { time: 196, text: "And now you'll pay when these walls come tumbling down" },
-                { time: 207, text: "Oh, they're tumbling down" }
+                { time: 0, text: "Hold the dice, your turn to roll", fadeIn: false }, // No fade in for the first lyric
+                { time: 5, text: "Before they fall through your fingers", fadeIn: true },
+                { time: 15, text: "Not a good night to lose control", fadeIn: true },
+                { time: 19, text: "Right as the earth is unraveling", fadeIn: true },
+                { time: 27, text: "You play with your blocks until they break", fadeIn: true },
+                { time: 37, text: "And these walls come tumbling down", fadeIn: true },
+                { time: 44, text: "Oh, they're tumbling down", fadeIn: true },
+                { time: 52, text: "You're out of time, make your move", fadeIn: true },
+                { time: 56, text: "Live or die while the fuse is lit and there's no turning back", fadeIn: true },
+                { time: 66, text: "Kiss your perfect day goodbye", fadeIn: true },
+                { time: 71, text: "Because the world is on fire", fadeIn: true },
+                { time: 80, text: "Tuck your innocence goodnight", fadeIn: true },
+                { time: 84, text: "You sold your friends like guns for hire", fadeIn: true },
+                { time: 92, text: "Go play with your blocks", fadeIn: true },
+                { time: 98, text: "And now you'll pay when these walls come tumbling down", fadeIn: true },
+                { time: 110, text: "Oh, they're tumbling down", fadeIn: true },
+                { time: 121, text: "Resting on a knife, you heavy souls", fadeIn: true },
+                { time: 126, text: "With all this weight buckling down on you now", fadeIn: true },
+                { time: 131, text: "Don't you drown and float away", fadeIn: true },
+                { time: 135, text: "Not a good time to lose control", fadeIn: true },
+                { time: 139, text: "Right as your marionettes cut their strings and run away", fadeIn: true },
+                { time: 148, text: "You're out of time, make your move", fadeIn: true },
+                { time: 152, text: "Live or die while the fuse is lit and there's no turning back", fadeIn: true },
+                { time: 164, text: "Kiss your perfect day goodbye", fadeIn: true },
+                { time: 169, text: "Because the world is on fire", fadeIn: true },
+                { time: 177, text: "Tuck your innocence goodnight", fadeIn: true },
+                { time: 182, text: "You sold your friends like guns for hire", fadeIn: true },
+                { time: 190, text: "Go play with your blocks", fadeIn: true },
+                { time: 196, text: "And now you'll pay when these walls come tumbling down", fadeIn: true },
+                { time: 207, text: "Oh, they're tumbling down", fadeIn: true }
             ];
 
             const lyricsElement = document.getElementById("lyrics");
@@ -137,26 +137,27 @@
             function updateLyrics() {
                 const currentTime = audio.currentTime;
 
-                // Check if it's time to update the lyric and fade out previous
-                if (currentIndex < lyrics.length && currentTime >= lyrics[currentIndex].time) {
-                    if (lyricsElement.innerText !== "") {
-                        // Fade out previous lyric
-                        lyricsElement.style.opacity = 0;
-
-                        // Delay before displaying the new lyric to achieve fade effect
-                        setTimeout(() => {
-                            lyricsElement.innerText = lyrics[currentIndex].text;
-
-                            // Fade in the new lyric
-                            lyricsElement.style.opacity = 1;
-                        }, 1000); // Adjust fade transition timing here
-                    } else {
-                        // First lyric display without fade out delay
-                        lyricsElement.innerText = lyrics[currentIndex].text;
-                        lyricsElement.style.opacity = 1;
-                    }
-
+                // Show first line without fade-in
+                if (currentIndex === 0 && currentTime >= lyrics[currentIndex].time) {
+                    lyricsElement.innerText = lyrics[currentIndex].text;
+                    lyricsElement.style.opacity = 1; // No fade-in
                     currentIndex++;
+                }
+
+                // Handle fade-in/fade-out for subsequent lines
+                if (currentIndex < lyrics.length && currentTime >= lyrics[currentIndex].time) {
+                    lyricsElement.innerText = lyrics[currentIndex].text;
+                    if (lyrics[currentIndex].fadeIn) {
+                        lyricsElement.style.opacity = 1; // Fade-in
+                    } else {
+                        lyricsElement.style.opacity = 0; // No fade-in
+                    }
+                    currentIndex++;
+                }
+
+                // Fade-out previous lyrics
+                if (currentIndex > 0 && currentTime < lyrics[currentIndex - 1].time) {
+                    lyricsElement.style.opacity = 0;
                 }
             }
 

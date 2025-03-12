@@ -98,7 +98,7 @@
             const lyrics = [
                 { time: 0, text: "Hold the dice, your turn to roll" },
                 { time: 5, text: "Before they fall through your fingers" },
-                { time: 15, text: "Not a good night to lose control" },
+                { time: 14, text: "Not a good night to lose control" },
                 { time: 19, text: "Right as the earth is unraveling" },
                 { time: 27, text: "You play with your blocks until they break" },
                 { time: 37, text: "And these walls come tumbling down" },
@@ -137,20 +137,24 @@
             function updateLyrics() {
                 const currentTime = audio.currentTime;
 
-                // Show the first line immediately
-                if (currentIndex === 0 && currentTime >= lyrics[currentIndex].time) {
-                    lyricsElement.innerText = lyrics[currentIndex].text;
-                    lyricsElement.style.opacity = 1; // Fade in immediately for the first lyric
-                    currentIndex++;
-                } else if (currentIndex < lyrics.length && currentTime >= lyrics[currentIndex].time) {
-                    // Fade out previous lyrics
-                    lyricsElement.style.opacity = 0;
+                // Check if it's time to update the lyric and fade out previous
+                if (currentIndex < lyrics.length && currentTime >= lyrics[currentIndex].time) {
+                    if (lyricsElement.innerText !== "") {
+                        // Fade out previous lyric
+                        lyricsElement.style.opacity = 0;
 
-                    // Immediately switch to the next lyric without waiting
-                    lyricsElement.innerText = lyrics[currentIndex].text;
+                        // Delay before displaying the new lyric to achieve fade effect
+                        setTimeout(() => {
+                            lyricsElement.innerText = lyrics[currentIndex].text;
 
-                    // Fade in new lyric
-                    lyricsElement.style.opacity = 1;
+                            // Fade in the new lyric
+                            lyricsElement.style.opacity = 1;
+                        }, 1000); // Adjust fade transition timing here
+                    } else {
+                        // First lyric display without fade out delay
+                        lyricsElement.innerText = lyrics[currentIndex].text;
+                        lyricsElement.style.opacity = 1;
+                    }
 
                     currentIndex++;
                 }

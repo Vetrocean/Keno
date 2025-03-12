@@ -98,7 +98,7 @@
             const lyrics = [
                 { time: 0, text: "Hold the dice, your turn to roll" },
                 { time: 5, text: "Before they fall through your fingers" },
-                { time: 15, text: "Not a good night to lose control" },
+                { time: 14, text: "Not a good night to lose control" },
                 { time: 19, text: "Right as the earth is unraveling" },
                 { time: 27, text: "You play with your blocks until they break" },
                 { time: 37, text: "And these walls come tumbling down" },
@@ -136,7 +136,13 @@
             // Function to update the lyrics based on the audio time
             function updateLyrics() {
                 const currentTime = audio.currentTime;
-                if (currentIndex < lyrics.length && currentTime >= lyrics[currentIndex].time) {
+
+                // Show the first line immediately
+                if (currentIndex === 0 && currentTime >= lyrics[currentIndex].time) {
+                    lyricsElement.innerText = lyrics[currentIndex].text;
+                    lyricsElement.style.opacity = 1; // Fade in immediately for the first lyric
+                    currentIndex++;
+                } else if (currentIndex < lyrics.length && currentTime >= lyrics[currentIndex].time) {
                     // Fade out previous lyrics and fade in new one
                     lyricsElement.style.opacity = 0;
 

@@ -1,173 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>★ 𝙎𝙪𝙥𝙚𝙧 ★</title>
-
-    <!-- Add Google Fonts link for Cinzel -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
-
-    <style>
-        body {
-            background: url('Bg.gif') no-repeat center center fixed;
-            background-size: cover;
-            background-attachment: fixed;
-            color: #fff;
-            text-align: center;
-            font-family: 'Cinzel', serif; /* Apply Cinzel font */
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
-        }
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-        img {
-            width: 300px;
-            margin-bottom: 10px;
-            border-radius: 10px;
-            position: relative;
-            top: 30px;
-        }
-        button {
-            padding: 10px;
-            font-size: 4rem;
-            background-color: white;
-            color: #000;
-            border: 2px solid #fff;
-            border-radius: 50%;
-            cursor: pointer;
-            margin-top: 20px;
-            outline: none;
-            width: 70px;
-            height: 70px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-left: auto;
-            margin-right: auto;
-            position: relative;
-            top: 10px;
-            left: 5px;
-        }
-        button:hover {
-            background-color: #f0f0f0;
-        }
-        #lyrics {
-            font-size: 1.5rem;
-            margin-top: 50px; /* Added space below the play button */
-            opacity: 0;
-            transition: opacity 1s ease-in-out; /* Add transition to fade lyrics */
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>★ 𝙎𝙪𝙥𝙚𝙧 ★</title>
+    <style>
+        body {
+            background: url('Bg.gif') no-repeat center center fixed;
+            background-size: cover;
+            background-attachment: fixed;
+            color: #fff;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        img {
+            width: 300px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            position: relative;
+            top: 30px;
+        }
+        button {
+            padding: 10px;
+            font-size: 4rem;
+            background-color: white;
+            color: #000;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            cursor: pointer;
+            margin-top: 20px;
+            outline: none;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            top: 10px;
+            left: 5px;
+        }
+        button:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
 </head>
 <body>
-    <!-- Image from GitHub -->
-    <img src="Pin.png" alt="Your Image">
+    <!-- Image from GitHub -->
+    <img src="Pin.png" alt="Your Image"> 
 
-    <div>
-        <h1>Keno, Scion of Stellar Echoes</h1>
-        <p>May the stars shine bright upon you every night</p>
-        <!-- Audio with initial low volume -->
-        <audio id="bg-audio" loop>
-            <source src="videoplayback.mp3" type="audio/mp3">
-            Your browser does not support the audio element.
-        </audio>
-        <!-- Play Button with Unicode ▸ symbol -->
-        <button onclick="playMusic()">&#x25B8;</button>
-        
-        <!-- Lyrics section -->
-        <div id="lyrics"></div>
-    </div>
+    <div>
+        <h1>Keno, Scion of Stellar Echoes</h1>
+        <p>May the stars shine bright upon you, every night</p>
+        <!-- Audio with initial low volume -->
+        <audio id="bg-audio" loop autoplay>
+            <source src="videoplayback.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+        <!-- Play Button with Unicode ▸ symbol -->
+        <button onclick="playMusic()">
+            <span>&#x25B8;</span> <!-- Unicode ▸ symbol -->
+        </button>
+    </div> 
 
-    <script>
-        // Function to play music with initial low volume
-        function playMusic() {
-            var audio = document.getElementById('bg-audio');
-            audio.volume = 0.3; // Adjust volume (0.0 - 1.0)
-            audio.play(); // Play the audio
+    <script>
+        // Set initial volume for the audio
+        var audio = document.getElementById('bg-audio');
+        audio.volume = 0.3; // Set both volumes to the same level (0.0 to 1.0) 
 
-            // Show lyrics
-            showLyrics();
-        }
-
-        // Function to handle showing lyrics in sync with music
-        function showLyrics() {
-            const lyrics = [
-                { time: 0, text: "Hold the dice, your turn to roll", fadeIn: false }, // No fade in for the first lyric
-                { time: 5, text: "Before they fall through your fingers", fadeIn: true },
-                { time: 14, text: "Not a good night to lose control", fadeIn: true },
-                { time: 19, text: "Right as the earth is unraveling", fadeIn: true },
-                { time: 27, text: "You play with your blocks until they break", fadeIn: true },
-                { time: 36, text: "And these walls come tumbling down", fadeIn: true },
-                { time: 44, text: "Oh, they're tumbling down", fadeIn: true },
-                { time: 52, text: "You're out of time, make your move", fadeIn: true },
-                { time: 55.75, text: "Live or die while the fuse is lit and there's no turning back", fadeIn: true },
-                { time: 65, text: "Kiss your perfect day goodbye", fadeIn: true },
-                { time: 70, text: "Because the world is on fire", fadeIn: true },
-                { time: 79, text: "Tuck your innocence goodnight", fadeIn: true },
-                { time: 84, text: "You sold your friends like guns for hire", fadeIn: true },
-                { time: 92, text: "Go play with your blocks", fadeIn: true },
-                { time: 98, text: "And now you'll pay when these walls come tumbling down", fadeIn: true },
-                { time: 109, text: "Oh, they're tumbling down", fadeIn: true },
-                { time: 120, text: "Resting on a knife, you heavy souls", fadeIn: true },
-                { time: 125, text: "With all this weight buckling down on you now", fadeIn: true },
-                { time: 131, text: "Don't you drown and float away", fadeIn: true },
-                { time: 134.10, text: "Not a good time to lose control", fadeIn: true },
-                { time: 139, text: "Right as your marionettes cut their strings and run away", fadeIn: true },
-                { time: 148, text: "You're out of time, make your move", fadeIn: true },
-                { time: 151.75, text: "Live or die while the fuse is lit and there's no turning back", fadeIn: true },
-                { time: 163, text: "Kiss your perfect day goodbye", fadeIn: true },
-                { time: 168, text: "Because the world is on fire", fadeIn: true },
-                { time: 177, text: "Tuck your innocence goodnight", fadeIn: true },
-                { time: 182, text: "You sold your friends like guns for hire", fadeIn: true },
-                { time: 190, text: "Go play with your blocks", fadeIn: true },
-                { time: 196, text: "And now you'll pay when these walls come tumbling down", fadeIn: true },
-                { time: 207, text: "Oh, they're tumbling down", fadeIn: true }
-            ];
-
-            const lyricsElement = document.getElementById("lyrics");
-            const audio = document.getElementById("bg-audio");
-
-            let currentIndex = 0;
-
-            // Function to update the lyrics based on the audio time
-            function updateLyrics() {
-                const currentTime = audio.currentTime;
-
-                // Show first line without fade-in
-                if (currentIndex === 0 && currentTime >= lyrics[currentIndex].time) {
-                    lyricsElement.innerText = lyrics[currentIndex].text;
-                    lyricsElement.style.opacity = 1; // No fade-in
-                    currentIndex++;
-                }
-
-                // Handle fade-in/fade-out for subsequent lines
-                if (currentIndex < lyrics.length && currentTime >= lyrics[currentIndex].time) {
-                    lyricsElement.innerText = lyrics[currentIndex].text;
-                    if (lyrics[currentIndex].fadeIn) {
-                        lyricsElement.style.opacity = 1; // Fade-in
-                    } else {
-                        lyricsElement.style.opacity = 0; // No fade-in
-                    }
-                    currentIndex++;
-                }
-
-                // Fade-out previous lyrics
-                if (currentIndex > 0 && currentTime < lyrics[currentIndex - 1].time) {
-                    lyricsElement.style.opacity = 0;
-                }
-            }
-
-            // Update lyrics every 100ms while the audio is playing
-            setInterval(updateLyrics, 100);
-        }
-    </script>
+        // Function to play music with the same volume level
+        function playMusic() {
+            audio.play(); // Play the audio
+        }
+    </script>
 </body>
 </html>

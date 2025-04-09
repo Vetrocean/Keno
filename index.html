@@ -3,90 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>★ Welcome ★</title>
+    <title>★ 𝙎𝙪𝙥𝙚𝙧 ★</title>
     <style>
         body {
-            margin: 0;
+            background: url('background.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+            font-family: Arial, sans-serif;
             padding: 0;
-            background: url('YourBackgroundImage.png') no-repeat center center fixed; /* Set the background image */
-            background-size: cover; /* Ensure the background covers the full screen */
-            height: 100vh; /* Full height of the viewport */
-            width: 100%; /* Full width of the viewport */
+            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Georgia', serif;
-            color: #fff;
-            position: relative; /* Ensure the text box is placed correctly */
+            flex-direction: column;
+            height: 100vh;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
         }
 
-        /* Character image positioning */
+        /* Character size on PC (desktop version) */
         #character {
             position: absolute;
-            bottom: 0; /* Position at the bottom of the screen */
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            max-width: 65%; /* Middle value for PC */
-            max-height: 50%; /* Middle value for PC */
-            height: auto;
+            max-width: 120%;  /* Increased size for PC */
+            max-height: 100%; /* Increased size for PC */
+            height: auto;     /* Maintain aspect ratio */
         }
 
-        /* Text box styling like old Pokémon games */
-        #textbox {
-            position: absolute;
-            bottom: 20px; /* Adjust the bottom spacing of the text box */
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: white; /* Inside of the text box is white */
-            color: black; /* Text color is black */
-            padding: 15px 25px;
-            border: 3px solid black; /* Black border */
-            font-size: 1.5rem;
-            max-width: 90%; /* Limit the width so it's not too big on mobile */
-            text-align: center;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-            border-radius: 10px; /* Optional rounded corners */
-        }
-
-        /* Audio settings */
-        audio {
-            display: none; /* Hide the audio player */
-        }
-
-        /* Mobile adjustments */
+        /* Mobile Portrait Mode Adjustments */
         @media (max-width: 768px) {
             #character {
-                max-width: 80%; /* Larger on mobile */
-                max-height: 70%; /* Larger on mobile */
-            }
-
-            #textbox {
-                font-size: 1.2rem; /* Make text smaller on mobile */
-                padding: 10px 15px; /* Adjust padding for smaller screens */
+                max-width: 160%;   /* Increased size for mobile portrait */
+                max-height: 140%;  /* Increased size for mobile portrait */
             }
         }
 
+        /* Text Box Styling (Pokemon-like style) */
+        #text-box {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: white;
+            border: 4px solid black;
+            padding: 10px 20px;
+            width: 80%;
+            max-width: 600px;
+            font-size: 1.2rem;
+            color: black;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
+    <!-- Character Image -->
+    <img id="background" src="background.png" alt="Background">
+    <img id="character" src="character.png" alt="Character">
 
-    <!-- Character image -->
-    <img id="character" src="YourCharacterImage.png" alt="Character">
-
-    <!-- Textbox message -->
-    <div id="textbox">
+    <!-- Text Box -->
+    <div id="text-box">
         Welcome! Please enjoy your stay and relax...
     </div>
 
-    <!-- Background music -->
-    <audio id="bg-audio" autoplay loop>
+    <!-- Audio Player (Same Music) -->
+    <audio id="bg-audio" loop>
         <source src="videoplayback.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
 
     <script>
-        const audio = document.getElementById('bg-audio');
-        audio.volume = 0.3;
+        // Function to play music with initial low volume
+        function playMusic() {
+            var audio = document.getElementById('bg-audio');
+            audio.volume = 0.3; // Adjust volume (0.0 - 1.0)
+            audio.play(); // Play the audio
+        }
     </script>
 </body>
 </html>

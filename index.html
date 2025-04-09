@@ -63,6 +63,7 @@
       display: none;
     }
 
+    /* Mobile adjustments */
     @media (max-width: 768px) {
       #character {
         position: absolute;
@@ -85,15 +86,51 @@
         left: 60%;
         transform: translateX(-50%);
       }
+
+      #play-button {
+        position: absolute;
+        bottom: 120px; /* Positioned below the text box */
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #000;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      #play-button:hover {
+        background-color: #555;
+      }
     }
 
+    /* PC adjustments */
     @media (min-width: 769px) {
       #textbox {
         font-size: 2rem;
         padding: 20px 40px;
         max-width: 80%;
-        left: 50%; /* Centered again */
+        left: 40%;
         transform: translateX(-50%);
+      }
+
+      #play-button {
+        position: absolute;
+        bottom: 15px;
+        left: calc(50% + 150px); /* Positioned to the right of the text box */
+        background-color: #000;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1.5rem;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      #play-button:hover {
+        background-color: #555;
       }
     }
   </style>
@@ -107,6 +144,9 @@
     <div>Please enjoy your stay and relax...</div>
   </div>
 
+  <!-- Play button -->
+  <button id="play-button" onclick="toggleMusic()">Play Music</button>
+
   <audio id="bg-audio" autoplay loop>
     <source src="videoplayback.mp3" type="audio/mp3">
     Your browser does not support the audio element.
@@ -114,7 +154,20 @@
 
   <script>
     const audio = document.getElementById('bg-audio');
+    const playButton = document.getElementById('play-button');
+
+    // Set initial volume and mute status
     audio.volume = 0.3;
+
+    function toggleMusic() {
+      if (audio.paused) {
+        audio.play();
+        playButton.textContent = 'Pause Music';
+      } else {
+        audio.pause();
+        playButton.textContent = 'Play Music';
+      }
+    }
   </script>
 </body>
 </html>

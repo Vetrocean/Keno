@@ -89,20 +89,30 @@
 
       #play-button {
         position: absolute;
-        bottom: 120px; /* Positioned below the text box */
-        left: 50%;
+        bottom: 150px; /* Move it up */
+        left: 75%; /* Move it to the right */
         transform: translateX(-50%);
         background-color: #000;
         color: #fff;
         border: none;
-        padding: 10px 20px;
-        font-size: 1.2rem;
-        border-radius: 5px;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        font-size: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         cursor: pointer;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
       }
 
       #play-button:hover {
         background-color: #555;
+      }
+
+      #play-button:before {
+        content: '▶'; /* Play icon */
+        font-size: 2rem;
       }
     }
 
@@ -123,14 +133,24 @@
         background-color: #000;
         color: #fff;
         border: none;
-        padding: 10px 20px;
-        font-size: 1.5rem;
-        border-radius: 5px;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        font-size: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         cursor: pointer;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
       }
 
       #play-button:hover {
         background-color: #555;
+      }
+
+      #play-button:before {
+        content: '▶'; /* Play icon */
+        font-size: 2rem;
       }
     }
   </style>
@@ -145,7 +165,7 @@
   </div>
 
   <!-- Play button -->
-  <button id="play-button" onclick="toggleMusic()">Play Music</button>
+  <button id="play-button" onclick="toggleMusic()"></button>
 
   <audio id="bg-audio" autoplay loop>
     <source src="videoplayback.mp3" type="audio/mp3">

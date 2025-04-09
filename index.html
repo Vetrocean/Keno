@@ -26,7 +26,8 @@
             bottom: 0; /* Position at the bottom of the screen */
             left: 50%;
             transform: translateX(-50%);
-            max-width: 90%; /* Make sure the character is not too big on mobile */
+            max-width: 80%; /* Ensure it's not too wide */
+            max-height: 40%; /* Limit height to keep it in proportion */
             height: auto;
         }
 
@@ -51,6 +52,20 @@
         audio {
             display: none; /* Hide the audio player */
         }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            #character {
+                max-width: 90%; /* Slightly larger on mobile */
+                max-height: 45%; /* Adjust the height to fit well on smaller screens */
+            }
+
+            #textbox {
+                font-size: 1.2rem; /* Make text smaller on mobile */
+                padding: 10px 15px; /* Adjust padding for smaller screens */
+            }
+        }
+
     </style>
 </head>
 <body>

@@ -34,7 +34,7 @@
         /* Text box styling like old Pokémon games */
         #textbox {
             position: absolute;
-            bottom: 20px; /* Adjust the bottom spacing of the text box */
+            bottom: 0; /* Start at the bottom of the screen */
             left: 50%;
             transform: translateX(-50%);
             background-color: white; /* Inside of the text box is white */
@@ -46,6 +46,20 @@
             text-align: center;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
             border-radius: 10px; /* Optional rounded corners */
+            animation: bounce 3s ease-in-out infinite; /* Apply the bounce animation */
+        }
+
+        /* Keyframes for the bounce animation */
+        @keyframes bounce {
+            0% {
+                transform: translateX(-50%) translateY(0); /* Start at the bottom */
+            }
+            50% {
+                transform: translateX(-50%) translateY(-15px); /* Move up slightly */
+            }
+            100% {
+                transform: translateX(-50%) translateY(0); /* Move back to the bottom */
+            }
         }
 
         /* Audio settings */

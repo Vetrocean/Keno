@@ -20,32 +20,36 @@
             position: relative; /* Ensure the text box is placed correctly */
         }
 
+        /* Character image positioning */
         #character {
             position: absolute;
-            bottom: 50px; /* Adjust this value to move your character up/down */
+            bottom: 0; /* Position at the bottom of the screen */
             left: 50%;
             transform: translateX(-50%);
-            max-width: 600px;
-            width: 80%;
+            max-width: 90%; /* Make sure the character is not too big on mobile */
+            height: auto;
         }
 
+        /* Text box styling like old Pokémon games */
         #textbox {
             position: absolute;
-            bottom: 20px;
+            bottom: 20px; /* Adjust the bottom spacing of the text box */
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.65);
-            color: #fff;
-            padding: 20px 30px;
-            border-radius: 15px;
-            font-size: 1.2rem;
-            max-width: 80%;
+            background-color: white; /* Inside of the text box is white */
+            color: black; /* Text color is black */
+            padding: 15px 25px;
+            border: 3px solid black; /* Black border */
+            font-size: 1.5rem;
+            max-width: 90%; /* Limit the width so it's not too big on mobile */
             text-align: center;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            border-radius: 10px; /* Optional rounded corners */
         }
 
+        /* Audio settings */
         audio {
-            display: none; /* Keep the audio hidden */
+            display: none; /* Hide the audio player */
         }
     </style>
 </head>

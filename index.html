@@ -2,23 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>★ Welcome ★</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            background: url('YourBackgroundImage.png') no-repeat center center fixed;
-            background-size: 100% 100%; /* Make the background stretch to cover the entire viewport */
+            background: url('YourBackgroundImage.png') no-repeat center center fixed; /* Set the PNG as background */
+            background-size: cover; /* Ensure it covers the entire screen */
+            height: 100vh; /* Full height of the viewport */
+            width: 100%; /* Full width of the viewport */
+            display: flex;
+            justify-content: center;
+            align-items: center;
             font-family: 'Georgia', serif;
             color: #fff;
-            height: 100vh;
-            overflow: hidden;
-            position: relative;
         }
 
         #character {
             position: absolute;
-            bottom: 100px;
+            bottom: 100px; /* Adjust this if you want the character at a different position */
             left: 50%;
             transform: translateX(-50%);
             max-width: 600px;
@@ -47,7 +50,7 @@
 </head>
 <body>
 
-    <!-- Character image layered on top of the background -->
+    <!-- Character image -->
     <img id="character" src="YourCharacterImage.png" alt="Character">
 
     <!-- Textbox message -->

@@ -2,80 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>★ 𝙎𝙪𝙥𝙚𝙧 ★</title>
+    <title>★ Welcome ★</title>
     <style>
         body {
-            background: url('Bg.gif') no-repeat center center fixed;
-            background-size: cover;
-            background-attachment: fixed;
-            color: #fff;
-            text-align: center;
-            font-family: 'Arial', sans-serif;
-            padding: 0;
             margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
+            padding: 0;
+            background: url('YourBackgroundImage.png') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Georgia', serif;
+            color: #fff;
             height: 100vh;
-        }
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-        img {
-            width: 300px;
-            margin-bottom: 10px;
-            border-radius: 10px;
+            overflow: hidden;
             position: relative;
-            top: 30px;
         }
-        button {
-            padding: 10px;
-            font-size: 4rem;
-            background-color: white;
-            color: #000;
-            border: 2px solid #fff;
-            border-radius: 50%;
-            cursor: pointer;
-            margin-top: 20px;
-            outline: none;
-            width: 70px;
-            height: 70px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-left: auto;
-            margin-right: auto;
-            position: relative;
-            top: 10px;
-            left: 5px;
+
+        #character {
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 600px;
+            width: 80%;
         }
-        button:hover {
-            background-color: #f0f0f0;
+
+        #textbox {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.65);
+            color: #fff;
+            padding: 20px 30px;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            max-width: 80%;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        audio {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <img src="Pin.png" alt="Your Image">
 
-    <div>
-        <h1>Howdy!</h1>
-        <p>May the stars shine bright upon you every night</p>
-        <audio id="bg-audio" loop>
-            <source src="videoplayback.mp3?v=1" type="audio/mp3">
-            Your browser does not support the audio element.
-        </audio>
-        <button onclick="playMusic()">&#x25B8;</button>
+    <!-- Character image layered on top of the background -->
+    <img id="character" src="YourCharacterImage.png" alt="Character">
+
+    <!-- Textbox message -->
+    <div id="textbox">
+        Welcome! Please enjoy your stay and relax...
     </div>
 
+    <!-- Background music -->
+    <audio id="bg-audio" autoplay loop>
+        <source src="videoplayback.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
     <script>
-        function playMusic() {
-            var audio = document.getElementById('bg-audio');
-            audio.volume = 0.3; // Set volume
-            audio.play(); // Play music
-        }
+        const audio = document.getElementById('bg-audio');
+        audio.volume = 0.3;
     </script>
 </body>
 </html>

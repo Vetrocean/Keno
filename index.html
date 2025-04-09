@@ -5,50 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>★ 𝙎𝙪𝙥𝙚𝙧 ★</title>
     <style>
+        /* Basic reset and setup */
         body {
             background: url('background.png') no-repeat center center fixed;
             background-size: cover;
             color: #fff;
             text-align: center;
             font-family: Arial, sans-serif;
-            padding: 0;
             margin: 0;
+            height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-end;
             flex-direction: column;
-            height: 100vh;
-        }
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-        img {
-            width: 100%;
-            height: auto;
-            max-width: 100%;
         }
 
-        /* Character size on PC (desktop version) */
+        /* Character image size adjustments */
         #character {
             position: absolute;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            max-width: 120%;  /* Increased size for PC */
-            max-height: 100%; /* Increased size for PC */
-            height: auto;     /* Maintain aspect ratio */
+            max-width: 120%;
+            height: auto;
         }
 
-        /* Mobile Portrait Mode Adjustments */
-        @media (max-width: 768px) {
-            #character {
-                max-width: 160%;   /* Increased size for mobile portrait */
-                max-height: 140%;  /* Increased size for mobile portrait */
-            }
-        }
-
-        /* Text Box Styling (Pokemon-like style) */
+        /* Text Box Styling */
         #text-box {
             position: absolute;
             bottom: 30px;
@@ -63,11 +45,23 @@
             color: black;
             text-align: center;
         }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            #character {
+                max-width: 160%;
+                height: auto;
+            }
+        }
+
+        /* For audio setup */
+        audio {
+            display: none;
+        }
     </style>
 </head>
 <body>
     <!-- Character Image -->
-    <img id="background" src="background.png" alt="Background">
     <img id="character" src="character.png" alt="Character">
 
     <!-- Text Box -->
@@ -75,19 +69,19 @@
         Welcome! Please enjoy your stay and relax...
     </div>
 
-    <!-- Audio Player (Same Music) -->
+    <!-- Audio Player (same music) -->
     <audio id="bg-audio" loop>
         <source src="videoplayback.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
 
     <script>
-        // Function to play music with initial low volume
-        function playMusic() {
+        // Play the music automatically
+        window.onload = function() {
             var audio = document.getElementById('bg-audio');
-            audio.volume = 0.3; // Adjust volume (0.0 - 1.0)
-            audio.play(); // Play the audio
-        }
+            audio.volume = 0.3;  // Set the audio volume
+            audio.play();        // Start playing the audio
+        };
     </script>
 </body>
 </html>

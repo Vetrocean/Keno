@@ -74,9 +74,22 @@
                 max-height: 140%; /* Larger on mobile */
             }
 
+            /* Adjusting the text box for mobile */
             #textbox {
-                font-size: 1.2rem; /* Make text smaller on mobile */
+                font-size: 1rem; /* Make text smaller on mobile */
                 padding: 10px 15px; /* Adjust padding for smaller screens */
+                max-width: 95%; /* Make text box a bit wider on mobile */
+                text-align: center;
+                bottom: 0; /* Keep it at the bottom */
+            }
+        }
+
+        /* PC adjustments */
+        @media (min-width: 769px) {
+            #textbox {
+                font-size: 2rem; /* Larger font size on PC */
+                padding: 20px 40px; /* Make the text box bigger */
+                max-width: 80%; /* Adjust the width of the text box */
             }
         }
 

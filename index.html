@@ -35,7 +35,7 @@
         /* Text box styling like old Pokémon games */
         #textbox {
             position: absolute;
-            bottom: 0; /* Start at the bottom of the screen */
+            bottom: 30px; /* Adjusted position to move the text box up slightly */
             left: 50%;
             transform: translateX(-50%);
             background-color: white; /* Inside of the text box is white */
@@ -72,7 +72,7 @@
         @media (max-width: 768px) {
             #character {
                 position: absolute; /* Keep character at the bottom */
-                bottom: -10px; /* Adjust further to ensure it's at the very bottom */
+                bottom: -30px; /* Adjust further to ensure it's at the very bottom */
                 left: 50%;
                 transform: translateX(-50%);
                 max-width: 140%; /* Make the character larger */
@@ -85,7 +85,7 @@
                 padding: 15px 20px; /* Adjust padding for smaller screens */
                 max-width: 95%; /* Make the text box wider on mobile */
                 text-align: center;
-                bottom: 0; /* Keep it at the bottom of the screen */
+                bottom: 20px; /* Adjust position to move text box slightly higher */
                 transform: translateX(-50%); /* Keep it centered */
             }
         }

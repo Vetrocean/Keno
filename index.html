@@ -92,8 +92,8 @@
         bottom: 150px; /* Move it up */
         left: 75%; /* Move it to the right */
         transform: translateX(-50%);
-        background-color: #000;
-        color: #fff;
+        background-color: #fff;
+        color: #000;
         border: none;
         width: 70px;
         height: 70px;
@@ -107,11 +107,11 @@
       }
 
       #play-button:hover {
-        background-color: #555;
+        background-color: #f1f1f1;
       }
 
       #play-button:before {
-        content: '▶'; /* Play icon */
+        content: '▸'; /* Play icon */
         font-size: 2rem;
       }
     }
@@ -130,8 +130,8 @@
         position: absolute;
         bottom: 15px;
         left: calc(50% + 150px); /* Positioned to the right of the text box */
-        background-color: #000;
-        color: #fff;
+        background-color: #fff;
+        color: #000;
         border: none;
         width: 70px;
         height: 70px;
@@ -145,11 +145,11 @@
       }
 
       #play-button:hover {
-        background-color: #555;
+        background-color: #f1f1f1;
       }
 
       #play-button:before {
-        content: '▶'; /* Play icon */
+        content: '▸'; /* Play icon */
         font-size: 2rem;
       }
     }
@@ -165,9 +165,9 @@
   </div>
 
   <!-- Play button -->
-  <button id="play-button" onclick="toggleMusic()"></button>
+  <button id="play-button" onclick="playMusic()"></button>
 
-  <audio id="bg-audio" autoplay loop>
+  <audio id="bg-audio" loop>
     <source src="videoplayback.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
@@ -176,17 +176,12 @@
     const audio = document.getElementById('bg-audio');
     const playButton = document.getElementById('play-button');
 
-    // Set initial volume and mute status
+    // Set initial volume
     audio.volume = 0.3;
 
-    function toggleMusic() {
-      if (audio.paused) {
-        audio.play();
-        playButton.textContent = 'Pause Music';
-      } else {
-        audio.pause();
-        playButton.textContent = 'Play Music';
-      }
+    // Play music when button is clicked
+    function playMusic() {
+      audio.play();
     }
   </script>
 </body>

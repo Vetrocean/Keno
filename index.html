@@ -75,13 +75,14 @@
             }
 
             #textbox {
-                font-size: 1.2rem;
-                padding: 15px 20px;
-                max-width: 95%;
+                font-size: 1.1rem;
+                padding: 20px 25px;
+                max-width: 320px;
                 text-align: center;
                 bottom: 450px;
-                left: 60%; /* Shifted right ONLY on mobile */
+                left: 60%;
                 transform: translateX(-50%);
+                line-height: 1.6;
             }
         }
 
@@ -90,7 +91,7 @@
                 font-size: 2rem;
                 padding: 20px 40px;
                 max-width: 80%;
-                left: 50%; /* Keep centered on PC */
+                left: 50%;
                 transform: translateX(-50%);
             }
         }
@@ -101,7 +102,8 @@
     <img id="character" src="YourCharacterImage.png" alt="Character">
 
     <div id="textbox">
-        Welcome! Please enjoy your stay and relax...
+        <div>Welcome!</div>
+        <div>Please enjoy your stay and relax...</div>
     </div>
 
     <audio id="bg-audio" autoplay loop>

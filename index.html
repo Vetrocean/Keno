@@ -3,85 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>★ 𝙎𝙪𝙥𝙚𝙧 ★</title>
+    <title>★ Welcome ★</title>
     <style>
-        /* Basic reset and setup */
         body {
-            background: url('background.png') no-repeat center center fixed;
-            background-size: cover;
-            color: #fff;
-            text-align: center;
-            font-family: Arial, sans-serif;
             margin: 0;
-            height: 100vh;
+            padding: 0;
+            background: url('YourBackgroundImage.png') no-repeat center center fixed; /* Set the background image */
+            background-size: cover; /* Ensure the background covers the full screen */
+            height: 100vh; /* Full height of the viewport */
+            width: 100%; /* Full width of the viewport */
             display: flex;
             justify-content: center;
-            align-items: flex-end;
-            flex-direction: column;
+            align-items: center;
+            font-family: 'Georgia', serif;
+            color: #fff;
+            position: relative; /* Ensure the text box is placed correctly */
         }
 
-        /* Character image size adjustments */
+        /* Character image positioning */
         #character {
             position: absolute;
-            bottom: 0;
+            bottom: 0; /* Position at the bottom of the screen */
             left: 50%;
             transform: translateX(-50%);
-            max-width: 120%;
+            max-width: 65%; /* Middle value for PC */
+            max-height: 50%; /* Middle value for PC */
             height: auto;
         }
 
-        /* Text Box Styling */
-        #text-box {
+        /* Text box styling like old Pokémon games */
+        #textbox {
             position: absolute;
-            bottom: 30px;
+            bottom: 20px; /* Adjust the bottom spacing of the text box */
             left: 50%;
             transform: translateX(-50%);
-            background-color: white;
-            border: 4px solid black;
-            padding: 10px 20px;
-            width: 80%;
-            max-width: 600px;
-            font-size: 1.2rem;
-            color: black;
+            background-color: white; /* Inside of the text box is white */
+            color: black; /* Text color is black */
+            padding: 15px 25px;
+            border: 3px solid black; /* Black border */
+            font-size: 1.5rem;
+            max-width: 90%; /* Limit the width so it's not too big on mobile */
             text-align: center;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            border-radius: 10px; /* Optional rounded corners */
+        }
+
+        /* Audio settings */
+        audio {
+            display: none; /* Hide the audio player */
         }
 
         /* Mobile adjustments */
         @media (max-width: 768px) {
             #character {
-                max-width: 160%;
-                height: auto;
+                max-width: 80%; /* Larger on mobile */
+                max-height: 70%; /* Larger on mobile */
+            }
+
+            #textbox {
+                font-size: 1.2rem; /* Make text smaller on mobile */
+                padding: 10px 15px; /* Adjust padding for smaller screens */
             }
         }
 
-        /* For audio setup */
-        audio {
-            display: none;
-        }
     </style>
 </head>
 <body>
-    <!-- Character Image -->
-    <img id="character" src="character.png" alt="Character">
 
-    <!-- Text Box -->
-    <div id="text-box">
+    <!-- Character image -->
+    <img id="character" src="YourCharacterImage.png" alt="Character">
+
+    <!-- Textbox message -->
+    <div id="textbox">
         Welcome! Please enjoy your stay and relax...
     </div>
 
-    <!-- Audio Player (same music) -->
-    <audio id="bg-audio" loop>
+    <!-- Background music -->
+    <audio id="bg-audio" autoplay loop>
         <source src="videoplayback.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
 
     <script>
-        // Play the music automatically
-        window.onload = function() {
-            var audio = document.getElementById('bg-audio');
-            audio.volume = 0.3;  // Set the audio volume
-            audio.play();        // Start playing the audio
-        };
+        const audio = document.getElementById('bg-audio');
+        audio.volume = 0.3;
     </script>
 </body>
 </html>

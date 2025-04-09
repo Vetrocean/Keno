@@ -8,8 +8,8 @@
         body {
             margin: 0;
             padding: 0;
-            background: url('YourBackgroundImage.png') no-repeat center center fixed; /* Set the PNG as background */
-            background-size: cover; /* Ensure it covers the entire screen */
+            background: url('YourBackgroundImage.png') no-repeat center center fixed; /* Set the background image */
+            background-size: cover; /* Ensure the background covers the full screen */
             height: 100vh; /* Full height of the viewport */
             width: 100%; /* Full width of the viewport */
             display: flex;
@@ -17,11 +17,12 @@
             align-items: center;
             font-family: 'Georgia', serif;
             color: #fff;
+            position: relative; /* Ensure the text box is placed correctly */
         }
 
         #character {
             position: absolute;
-            bottom: 100px; /* Adjust this if you want the character at a different position */
+            bottom: 50px; /* Adjust this value to move your character up/down */
             left: 50%;
             transform: translateX(-50%);
             max-width: 600px;
@@ -44,7 +45,7 @@
         }
 
         audio {
-            display: none;
+            display: none; /* Keep the audio hidden */
         }
     </style>
 </head>

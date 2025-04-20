@@ -1,167 +1,140 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>★ Welcome ★</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The End Is Near</title>
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
   <style>
-    @font-face {
-      font-family: 'Arcane';
-      src: url('ArcaneFont.ttf') format('truetype');
-    }
-
-    body {
+    html, body {
       margin: 0;
       padding: 0;
+      height: 100%;
       overflow: hidden;
-      height: 100vh;
-      width: 100vw;
-      position: relative;
       background: black;
-    }
+    }body {
+  font-family: 'UnifrakturCook', cursive;
+}
 
-    /* Layer 1: Extra Filler at the back */
-    .extra-filler {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: 1;
-      pointer-events: none;
-    }
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url('YourBackgroundImage.png') no-repeat center center fixed;
+  background-size: cover;
+  z-index: 1;
+}
 
-    /* Layer 2: Left & Right Filler */
-    .side-img {
-      position: absolute;
-      top: 0;
-      height: 100vh;
-      width: 20vw;
-      object-fit: cover;
-      z-index: 2;
-    }
+.side-filler-left, .side-filler-right, .extra-filler {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 2;
+}
 
-    .left-img {
-      left: 0;
-    }
+.side-filler-left {
+  left: 0;
+  background-image: url('YourFillerImage.png');
+}
 
-    .right-img {
-      right: 0;
-      transform: scaleX(-1);
-    }
+.side-filler-right {
+  right: 0;
+  background-image: url('YourFillerImage.png');
+}
 
-    /* Layer 3: Main Background (on top of fillers) */
-    .background {
-      background: url('YourBackgroundImage.png') no-repeat center center fixed;
-      background-size: contain;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 3;
-    }
+.extra-filler {
+  left: 100px;
+  right: 100px;
+  background-image: url('YourExtraFiller.png');
+  z-index: 3;
+}
 
-    /* Floating Text */
-    #textbox {
-      position: absolute;
-      color: rgba(181, 129, 255, 0.4);
-      font-family: 'Arcane', serif;
-      font-size: 3rem;
-      text-align: center;
-      animation: bounce 3s ease-in-out infinite;
-      top: 120px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 4;
-    }
+.floating-text {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3em;
+  color: rgba(200, 160, 255, 0.8);
+  animation: floatText 3s ease-in-out infinite;
+  text-shadow: 0 0 10px rgba(200, 160, 255, 0.4);
+  z-index: 4;
+}
 
-    @keyframes bounce {
-      0% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(-15px); }
-      100% { transform: translateX(-50%) translateY(0); }
-    }
+@keyframes floatText {
+  0%, 100% {
+    transform: translate(-50%, -52%);
+  }
+  50% {
+    transform: translate(-50%, -48%);
+  }
+}
 
-    /* Play Button */
-    #play-button {
-      position: absolute;
-      bottom: 100px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: transparent;
-      color: rgba(181, 129, 255, 0.4);
-      border: none;
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      font-size: 3rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      z-index: 4;
-    }
+#playButton {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 100px;
+  background-color: transparent;
+  border-radius: 50%;
+  z-index: 4;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
 
-    #play-button:before {
-      content: '▸';
-      font-size: 3rem;
-    }
+#playButton::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+  z-index: -1;
+  background: transparent;
+}
 
-    @media (max-width: 768px) {
-      #textbox {
-        font-size: 1.5rem;
-        top: 100px;
-      }
+#playButton svg {
+  fill: rgba(200, 160, 255, 0.8);
+  width: 50%;
+  height: 50%;
+}
 
-      #play-button {
-        bottom: 150px;
-      }
-
-      .side-img {
-        display: none;
-      }
-    }
-
-    audio {
-      display: none;
-    }
   </style>
 </head>
 <body>
-
-  <!-- Layer 1 -->
-  <img src="YourFillerExtra.png" class="extra-filler" />
-
-  <!-- Layer 2 -->
-  <img src="YourFillerImage.png" class="side-img left-img" />
-  <img src="YourFillerImage.png" class="side-img right-img" />
-
-  <!-- Layer 3 -->
   <div class="background"></div>
-
-  <!-- Text -->
-  <div id="textbox">The end is near</div>
-
-  <!-- Play Button -->
-  <button id="play-button" onclick="playMusic()"></button>
-
-  <!-- Music -->
-  <audio id="bg-audio" loop>
-    <source src="videoplayback.mp3" type="audio/mp3" />
-    Your browser does not support the audio element.
-  </audio>
+  <div class="side-filler-left"></div>
+  <div class="side-filler-right"></div>
+  <div class="extra-filler"></div>  <div class="floating-text">The end is near</div>  <button id="playButton">
+    <svg viewBox="0 0 64 64">
+      <polygon points="16,12 56,32 16,52" />
+    </svg>
+  </button><audio id="backgroundMusic" src="YourMusicFile.mp3" loop></audio>
 
   <script>
-    const audio = document.getElementById('bg-audio');
-    function playMusic() {
-      audio.play();
-    }
+    const audio = document.getElementById('backgroundMusic');
+    const playButton = document.getElementById('playButton');
 
-    window.onload = function () {
-      audio.volume = 0.3;
-      playMusic();
-    };
-  </script>
-</body>
+    // Try autoplay
+    document.addEventListener('DOMContentLoaded', () => {
+      const tryPlay = () => {
+        audio.play().catch(() => {
+          // Autoplay blocked
+        });
+      };
+      tryPlay();
+    });
+
+    playButton.addEventListener('click', () => {
+      audio.paused ? audio.play() : audio.pause();
+    });
+  </script></body>
 </html>

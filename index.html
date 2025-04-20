@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>★ Welcome ★</title>
   <style>
     @font-face {
@@ -13,24 +13,32 @@
     body {
       margin: 0;
       padding: 0;
-      background: url('YourBackgroundImage.png') no-repeat center center fixed;
-      background-size: contain;
+      overflow: hidden;
       height: 100vh;
       width: 100vw;
-      overflow: hidden;
       position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
 
+    /* Layer 1: Background */
+    .background {
+      background: url('YourBackgroundImage.png') no-repeat center center fixed;
+      background-size: contain;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+    }
+
+    /* Layer 2: Left & Right Filler */
     .side-img {
-      position: fixed;
+      position: absolute;
       top: 0;
       height: 100vh;
       width: 20vw;
       object-fit: cover;
-      z-index: -1;
+      z-index: 2;
     }
 
     .left-img {
@@ -42,6 +50,19 @@
       transform: scaleX(-1);
     }
 
+    /* Layer 3: Full-Page Extra Filler */
+    .extra-filler {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    /* Floating Text */
     #textbox {
       position: absolute;
       color: rgba(181, 129, 255, 0.4);
@@ -49,9 +70,10 @@
       font-size: 3rem;
       text-align: center;
       animation: bounce 3s ease-in-out infinite;
-      top: 150px; /* moved further UP from the center */
+      top: 120px;
       left: 50%;
       transform: translateX(-50%);
+      z-index: 4;
     }
 
     @keyframes bounce {
@@ -60,13 +82,10 @@
       100% { transform: translateX(-50%) translateY(0); }
     }
 
-    audio {
-      display: none;
-    }
-
+    /* Play Button */
     #play-button {
       position: absolute;
-      bottom: 70px;
+      bottom: 100px;
       left: 50%;
       transform: translateX(-50%);
       background-color: transparent;
@@ -80,10 +99,7 @@
       justify-content: center;
       align-items: center;
       cursor: pointer;
-    }
-
-    #play-button:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+      z-index: 4;
     }
 
     #play-button:before {
@@ -105,25 +121,38 @@
         display: none;
       }
     }
+
+    audio {
+      display: none;
+    }
   </style>
 </head>
 <body>
 
-  <img src="YourFillerImage.png" class="side-img left-img">
-  <img src="YourFillerImage.png" class="side-img right-img">
+  <!-- Layer 1 -->
+  <div class="background"></div>
 
+  <!-- Layer 2 -->
+  <img src="YourFillerImage.png" class="side-img left-img" />
+  <img src="YourFillerImage.png" class="side-img right-img" />
+
+  <!-- Layer 3 -->
+  <img src="YourFillerExtra.png" class="extra-filler" />
+
+  <!-- Floating Text -->
   <div id="textbox">The end is near</div>
 
+  <!-- Play Button -->
   <button id="play-button" onclick="playMusic()"></button>
 
+  <!-- Music -->
   <audio id="bg-audio" loop>
-    <source src="videoplayback.mp3" type="audio/mp3">
+    <source src="videoplayback.mp3" type="audio/mp3" />
     Your browser does not support the audio element.
   </audio>
 
   <script>
     const audio = document.getElementById('bg-audio');
-
     function playMusic() {
       audio.play();
     }
@@ -131,7 +160,7 @@
     window.onload = function () {
       audio.volume = 0.3;
       playMusic();
-    }
+    };
   </script>
 </body>
 </html>

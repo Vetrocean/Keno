@@ -17,18 +17,19 @@
       height: 100vh;
       width: 100vw;
       position: relative;
+      background: black;
     }
 
-    /* Layer 1: Background */
-    .background {
-      background: url('YourBackgroundImage.png') no-repeat center center fixed;
-      background-size: contain;
+    /* Layer 1: Extra Filler at the back */
+    .extra-filler {
       position: absolute;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
+      object-fit: cover;
       z-index: 1;
+      pointer-events: none;
     }
 
     /* Layer 2: Left & Right Filler */
@@ -50,16 +51,16 @@
       transform: scaleX(-1);
     }
 
-    /* Layer 3: Full-Page Extra Filler */
-    .extra-filler {
+    /* Layer 3: Main Background (on top of fillers) */
+    .background {
+      background: url('YourBackgroundImage.png') no-repeat center center fixed;
+      background-size: contain;
       position: absolute;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      object-fit: cover;
       z-index: 3;
-      pointer-events: none;
     }
 
     /* Floating Text */
@@ -130,16 +131,16 @@
 <body>
 
   <!-- Layer 1 -->
-  <div class="background"></div>
+  <img src="YourFillerExtra.png" class="extra-filler" />
 
   <!-- Layer 2 -->
   <img src="YourFillerImage.png" class="side-img left-img" />
   <img src="YourFillerImage.png" class="side-img right-img" />
 
   <!-- Layer 3 -->
-  <img src="YourFillerExtra.png" class="extra-filler" />
+  <div class="background"></div>
 
-  <!-- Floating Text -->
+  <!-- Text -->
   <div id="textbox">The end is near</div>
 
   <!-- Play Button -->

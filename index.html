@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>★ Welcome ★</title>
   <style>
+    @font-face {
+      font-family: 'Arcane';
+      src: url('ArcaneFont.ttf') format('truetype');
+    }
+
     body {
       margin: 0;
       padding: 0;
@@ -19,7 +24,6 @@
       align-items: center;
     }
 
-    /* Side filler image as full elements to avoid white gaps */
     .side-img {
       position: fixed;
       top: 0;
@@ -40,12 +44,12 @@
 
     #textbox {
       position: absolute;
-      color: rgba(181, 129, 255, 0.4); /* Translucent nebula purple */
+      color: rgba(181, 129, 255, 0.4);
       font-family: 'Arcane', serif;
       font-size: 3rem;
       text-align: center;
       animation: bounce 3s ease-in-out infinite;
-      bottom: 400px; /* Moved further up */
+      top: 150px; /* moved further UP from the center */
       left: 50%;
       transform: translateX(-50%);
     }
@@ -62,11 +66,11 @@
 
     #play-button {
       position: absolute;
-      bottom: 70px; /* Moved higher above taskbar */
+      bottom: 70px;
       left: 50%;
       transform: translateX(-50%);
       background-color: transparent;
-      color: rgba(181, 129, 255, 0.4); /* Match text color */
+      color: rgba(181, 129, 255, 0.4);
       border: none;
       width: 70px;
       height: 70px;
@@ -87,11 +91,10 @@
       font-size: 3rem;
     }
 
-    /* Mobile adjustments */
     @media (max-width: 768px) {
       #textbox {
         font-size: 1.5rem;
-        bottom: 250px;
+        top: 100px;
       }
 
       #play-button {
@@ -106,14 +109,11 @@
 </head>
 <body>
 
-  <!-- Side filler images -->
   <img src="YourFillerImage.png" class="side-img left-img">
   <img src="YourFillerImage.png" class="side-img right-img">
 
-  <!-- Floating Text -->
   <div id="textbox">The end is near</div>
 
-  <!-- Play button -->
   <button id="play-button" onclick="playMusic()"></button>
 
   <audio id="bg-audio" loop>

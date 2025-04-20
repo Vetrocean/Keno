@@ -10,21 +10,40 @@
     body {
       margin: 0;
       padding: 0;
-      background: url('YourBackgroundImage.png') no-repeat center center fixed;
-      background-size: cover;
-      height: 100vh;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
       font-family: 'UnifrakturCook', cursive;
       overflow: hidden;
       position: relative;
+      height: 100vh;
+      width: 100%;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: url('YourFillerImage.png') no-repeat center center fixed;
+      background-size: cover;
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: url('YourBackgroundImage.png') no-repeat center center fixed;
+      background-size: contain;
+      z-index: -1;
     }
 
     #message {
       margin-top: 10vh;
-      color: rgba(180, 160, 255, 0.12); /* Faint purplish glow */
+      color: rgba(180, 160, 255, 0.12);
       font-size: 3rem;
       text-align: center;
       animation: bounce 3s ease-in-out infinite;
@@ -52,9 +71,9 @@
       bottom: 40px;
       left: 50%;
       transform: translateX(-50%);
-      background-color: #fff;
-      color: #000;
-      border: none;
+      background-color: transparent;
+      color: rgba(180, 160, 255, 0.12);
+      border: 2px solid rgba(180, 160, 255, 0.15);
       width: 70px;
       height: 70px;
       border-radius: 50%;
@@ -63,25 +82,17 @@
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 20px rgba(140, 100, 200, 0.3);
+      backdrop-filter: blur(2px);
     }
 
     #play-button:hover {
-      background-color: #f1f1f1;
+      background-color: rgba(255, 255, 255, 0.05);
     }
 
     #play-button:before {
       content: '▸';
       font-size: 3rem;
-    }
-
-    /* Make sure background fits on PC */
-    @media (min-width: 768px) {
-      body {
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-      }
     }
   </style>
 </head>
@@ -97,7 +108,6 @@
 
   <script>
     const audio = document.getElementById('bg-audio');
-
     audio.volume = 0.3;
 
     function playMusic() {
@@ -105,9 +115,7 @@
     }
 
     window.addEventListener('load', () => {
-      audio.play().catch(() => {
-        // Autoplay requires user interaction
-      });
+      audio.play().catch(() => {});
     });
   </script>
 </body>

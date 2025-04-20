@@ -21,17 +21,15 @@
       overflow: hidden;
     }
 
-    /* Side background filler for PC only */
+    /* Side background filler for PC only (using YourFillerImage.png) */
     @media (min-width: 1024px) {
       .side-bg {
         position: fixed;
         top: 0;
         width: 25vw; /* Adjust width if needed */
         height: 100vh;
-        background-image: url('YourBackgroundImage.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
+        background-image: url('YourFillerImage.png');
+        background-repeat: repeat-y; /* Repeat the image vertically */
         z-index: -1;
       }
 

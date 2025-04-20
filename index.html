@@ -16,18 +16,19 @@
       width: 100%;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       font-family: 'UnifrakturCook', cursive;
       overflow: hidden;
       position: relative;
     }
 
     #message {
-      color: white;
+      margin-top: 10vh;
+      color: rgba(180, 160, 255, 0.12); /* Faint purplish glow */
       font-size: 3rem;
       text-align: center;
       animation: bounce 3s ease-in-out infinite;
-      text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+      text-shadow: 0 0 30px rgba(140, 100, 200, 0.3);
     }
 
     @keyframes bounce {
@@ -73,6 +74,15 @@
       content: '▸';
       font-size: 3rem;
     }
+
+    /* Make sure background fits on PC */
+    @media (min-width: 768px) {
+      body {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -88,17 +98,15 @@
   <script>
     const audio = document.getElementById('bg-audio');
 
-    // Set initial volume
     audio.volume = 0.3;
 
     function playMusic() {
       audio.play();
     }
 
-    // Try to autoplay immediately (some browsers require interaction)
     window.addEventListener('load', () => {
       audio.play().catch(() => {
-        // Autoplay failed, user interaction needed
+        // Autoplay requires user interaction
       });
     });
   </script>

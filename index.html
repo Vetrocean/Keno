@@ -70,12 +70,12 @@
     /* Floating Text */
     #textbox {
       position: absolute;
-      color: rgba(181, 129, 255, 0.4);
-      font-family: 'Creepster', cursive; /* Changed to Scary Font */
+      color: rgba(181, 129, 255, 0.2); /* More transparent */
+      font-family: 'Creepster', cursive;
       font-size: 3rem;
       text-align: center;
       animation: bounce 3s ease-in-out infinite;
-      top: 120px;
+      top: 150px; /* Lowered the position */
       left: 50%;
       transform: translateX(-50%);
       z-index: 4;
@@ -105,6 +105,7 @@
       align-items: center;
       cursor: pointer;
       z-index: 4;
+      box-shadow: 0 0 15px rgba(181, 129, 255, 0.6); /* Drop shadow for play button */
     }
 
     #play-button:before {

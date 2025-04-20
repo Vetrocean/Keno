@@ -9,71 +9,51 @@
       margin: 0;
       padding: 0;
       background: url('YourBackgroundImage.png') no-repeat center center fixed;
-      background-size: cover;
+      background-size: contain;
       height: 100vh;
-      width: 100%;
+      width: 100vw;
+      overflow: hidden;
+      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: 'Georgia', serif;
-      color: #fff;
-      position: relative;
-      overflow: hidden;
     }
 
-    /* Side background filler for PC only (using YourFillerImage.png) */
-    @media (min-width: 1024px) {
-      .side-bg {
-        position: fixed;
-        top: 0;
-        width: 25vw; /* Adjust width if needed */
-        height: 100vh;
-        background-image: url('YourFillerImage.png');
-        background-size: cover; /* Resize the filler image to cover the gap */
-        background-repeat: no-repeat; /* No repeat */
-        z-index: -1;
-      }
-
-      .left-bg {
-        left: 0;
-      }
-
-      .right-bg {
-        right: 0;
-        transform: scaleX(-1); /* Flip the image for the right side */
-      }
-
-      body {
-        background-position: center center;
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-        background-size: contain;
-      }
+    /* Side filler image as full elements to avoid white gaps */
+    .side-img {
+      position: fixed;
+      top: 0;
+      height: 100vh;
+      width: 20vw;
+      object-fit: cover;
+      z-index: -1;
     }
 
-    /* Floating text with elegant bounce effect */
+    .left-img {
+      left: 0;
+    }
+
+    .right-img {
+      right: 0;
+      transform: scaleX(-1);
+    }
+
     #textbox {
       position: absolute;
-      color: rgba(255, 255, 255, 0.7); /* Transparent floating text */
+      color: rgba(181, 129, 255, 0.4); /* Translucent nebula purple */
       font-family: 'Arcane', serif;
       font-size: 3rem;
       text-align: center;
       animation: bounce 3s ease-in-out infinite;
-      bottom: 350px;
+      bottom: 400px; /* Moved further up */
       left: 50%;
       transform: translateX(-50%);
     }
 
     @keyframes bounce {
-      0% {
-        transform: translateX(-50%) translateY(0);
-      }
-      50% {
-        transform: translateX(-50%) translateY(-15px);
-      }
-      100% {
-        transform: translateX(-50%) translateY(0);
-      }
+      0% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-15px); }
+      100% { transform: translateX(-50%) translateY(0); }
     }
 
     audio {
@@ -82,11 +62,11 @@
 
     #play-button {
       position: absolute;
-      bottom: 50px; /* Move the button higher */
+      bottom: 70px; /* Moved higher above taskbar */
       left: 50%;
       transform: translateX(-50%);
       background-color: transparent;
-      color: rgba(255, 255, 255, 0.7); /* Same color as text */
+      color: rgba(181, 129, 255, 0.4); /* Match text color */
       border: none;
       width: 70px;
       height: 70px;
@@ -96,7 +76,6 @@
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
 
     #play-button:hover {
@@ -104,7 +83,7 @@
     }
 
     #play-button:before {
-      content: '▸'; /* Play icon */
+      content: '▸';
       font-size: 3rem;
     }
 
@@ -112,49 +91,24 @@
     @media (max-width: 768px) {
       #textbox {
         font-size: 1.5rem;
-        padding: 15px 25px;
-        width: 80%;
-        text-align: center;
-        white-space: normal;
-        line-height: 1.6;
         bottom: 250px;
       }
 
       #play-button {
-        position: absolute;
         bottom: 150px;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: transparent;
-        color: rgba(255, 255, 255, 0.7);
-        border: none;
-        width: 70px;
-        height: 70px;
-        border-radius: 50%;
-        font-size: 3rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
       }
 
-      #play-button:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-      }
-
-      #play-button:before {
-        content: '▸';
-        font-size: 3rem;
+      .side-img {
+        display: none;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Side Backgrounds -->
-  <div class="side-bg left-bg"></div>
-  <div class="side-bg right-bg"></div>
+  <!-- Side filler images -->
+  <img src="YourFillerImage.png" class="side-img left-img">
+  <img src="YourFillerImage.png" class="side-img right-img">
 
   <!-- Floating Text -->
   <div id="textbox">The end is near</div>
@@ -169,18 +123,13 @@
 
   <script>
     const audio = document.getElementById('bg-audio');
-    const playButton = document.getElementById('play-button');
 
-    // Set initial volume
-    audio.volume = 0.3;
-
-    // Play music when button is clicked
     function playMusic() {
       audio.play();
     }
 
-    // Automatically play music when the page loads
-    window.onload = function() {
+    window.onload = function () {
+      audio.volume = 0.3;
       playMusic();
     }
   </script>

@@ -1,64 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The End</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>★ Welcome ★</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
-
     body {
       margin: 0;
       padding: 0;
-      font-family: 'UnifrakturCook', cursive;
-      overflow: hidden;
-      position: relative;
+      background: url('YourBackgroundImage.png') no-repeat center center fixed;
+      background-size: cover;
       height: 100vh;
       width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Georgia', serif;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: url('YourFillerImage.png') no-repeat center center fixed;
-      background-size: cover;
-      z-index: -2;
+    /* Side background filler for PC only */
+    @media (min-width: 1024px) {
+      .side-bg {
+        position: fixed;
+        top: 0;
+        width: 25vw; /* Adjust width if needed */
+        height: 100vh;
+        background-image: url('YourBackgroundImage.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: -1;
+      }
+
+      .left-bg {
+        left: 0;
+      }
+
+      .right-bg {
+        right: 0;
+        transform: scaleX(-1); /* Flip the image for the right side */
+      }
+
+      body {
+        background-position: center center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
     }
 
-    body::after {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: url('YourBackgroundImage.png') no-repeat center center fixed;
-      background-size: contain;
-      z-index: -1;
-    }
-
-    #message {
-      margin-top: 10vh;
-      color: rgba(180, 160, 255, 0.12);
+    #textbox {
+      position: absolute;
+      color: rgba(255, 255, 255, 0.7); /* Transparent floating text */
+      font-family: 'Arcane', serif;
       font-size: 3rem;
       text-align: center;
       animation: bounce 3s ease-in-out infinite;
-      text-shadow: 0 0 30px rgba(140, 100, 200, 0.3);
+      bottom: 350px;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     @keyframes bounce {
       0% {
-        transform: translateY(0);
+        transform: translateX(-50%) translateY(0);
       }
       50% {
-        transform: translateY(-15px);
+        transform: translateX(-50%) translateY(-15px);
       }
       100% {
-        transform: translateY(0);
+        transform: translateX(-50%) translateY(0);
       }
     }
 
@@ -68,12 +82,12 @@
 
     #play-button {
       position: absolute;
-      bottom: 40px;
+      bottom: 50px; /* Move the button higher */
       left: 50%;
       transform: translateX(-50%);
       background-color: transparent;
-      color: rgba(180, 160, 255, 0.12);
-      border: 2px solid rgba(180, 160, 255, 0.15);
+      color: rgba(255, 255, 255, 0.7); /* Same color as text */
+      border: none;
       width: 70px;
       height: 70px;
       border-radius: 50%;
@@ -82,41 +96,93 @@
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      box-shadow: 0 0 20px rgba(140, 100, 200, 0.3);
-      backdrop-filter: blur(2px);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
 
     #play-button:hover {
-      background-color: rgba(255, 255, 255, 0.05);
+      background-color: rgba(255, 255, 255, 0.1);
     }
 
     #play-button:before {
-      content: '▸';
+      content: '▸'; /* Play icon */
       font-size: 3rem;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+      #textbox {
+        font-size: 1.5rem;
+        padding: 15px 25px;
+        width: 80%;
+        text-align: center;
+        white-space: normal;
+        line-height: 1.6;
+        bottom: 250px;
+      }
+
+      #play-button {
+        position: absolute;
+        bottom: 150px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: transparent;
+        color: rgba(255, 255, 255, 0.7);
+        border: none;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        font-size: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      }
+
+      #play-button:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      #play-button:before {
+        content: '▸';
+        font-size: 3rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div id="message">The end is near</div>
 
+  <!-- Side Backgrounds -->
+  <div class="side-bg left-bg"></div>
+  <div class="side-bg right-bg"></div>
+
+  <!-- Floating Text -->
+  <div id="textbox">The end is near</div>
+
+  <!-- Play button -->
   <button id="play-button" onclick="playMusic()"></button>
 
-  <audio id="bg-audio" autoplay loop>
-    <source src="videoplayback.mp3" type="audio/mp3" />
+  <audio id="bg-audio" loop>
+    <source src="videoplayback.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
   <script>
     const audio = document.getElementById('bg-audio');
+    const playButton = document.getElementById('play-button');
+
+    // Set initial volume
     audio.volume = 0.3;
 
+    // Play music when button is clicked
     function playMusic() {
       audio.play();
     }
 
-    window.addEventListener('load', () => {
-      audio.play().catch(() => {});
-    });
+    // Automatically play music when the page loads
+    window.onload = function() {
+      playMusic();
+    }
   </script>
 </body>
 </html>

@@ -29,7 +29,8 @@
         width: 25vw; /* Adjust width if needed */
         height: 100vh;
         background-image: url('YourFillerImage.png');
-        background-repeat: repeat-y; /* Repeat the image vertically */
+        background-size: cover; /* Resize the filler image to cover the gap */
+        background-repeat: no-repeat; /* No repeat */
         z-index: -1;
       }
 
@@ -50,6 +51,7 @@
       }
     }
 
+    /* Floating text with elegant bounce effect */
     #textbox {
       position: absolute;
       color: rgba(255, 255, 255, 0.7); /* Transparent floating text */

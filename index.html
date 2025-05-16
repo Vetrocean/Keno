@@ -1,172 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>★ Welcome ★</title>
-  
-  <!-- Google Font for Scary Text -->
-  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
-  
   <style>
-    @font-face {
-      font-family: 'Arcane';
-      src: url('ArcaneFont.ttf') format('truetype');
-    }
-
     body {
       margin: 0;
       padding: 0;
-      overflow: hidden;
-      height: 100vh;
-      width: 100vw;
-      position: relative;
-      background: black;
-    }
-
-    /* Layer 1: Extra Filler at the back */
-    .extra-filler {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    /* Layer 2: Left & Right Filler */
-    .side-img {
-      position: absolute;
-      top: 0;
-      height: 100vh;
-      width: 20vw;
-      object-fit: cover;
-      z-index: 2;
-    }
-
-    .left-img {
-      left: 0;
-    }
-
-    .right-img {
-      right: 0;
-      transform: scaleX(-1);
-    }
-
-    /* Layer 3: Main Background (on top of fillers) */
-    .background {
       background: url('YourBackgroundImage.png') no-repeat center center fixed;
-      background-size: contain;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
+      background-size: cover;
       height: 100vh;
-      z-index: 3;
-    }
-
-    /* Floating Text */
-    #textbox {
-      position: absolute;
-      color: rgba(181, 129, 255, 0.2); /* More transparent */
-      font-family: 'Creepster', cursive;
-      font-size: 3rem;
-      text-align: center;
-      animation: bounce 3s ease-in-out infinite;
-      top: 180px; /* Lowered the position a bit more */
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 4;
-    }
-
-    @keyframes bounce {
-      0% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(-15px); }
-      100% { transform: translateX(-50%) translateY(0); }
-    }
-
-    /* Play Button */
-    #play-button {
-      position: absolute;
-      bottom: 100px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: transparent;
-      color: rgba(181, 129, 255, 0.4);
-      border: none;
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      font-size: 3rem;
+      width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-      cursor: pointer;
-      z-index: 4;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Black drop shadow */
+      font-family: 'Georgia', serif;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
     }
 
-    #play-button:before {
-      content: '▸';
-      font-size: 3rem;
+    #character {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 115%;
+      max-height: 100%;
+      height: auto;
     }
 
-    @media (max-width: 768px) {
-      #textbox {
-        font-size: 1.5rem;
-        top: 100px;
-      }
+    #textbox {
+      position: absolute;
+      bottom: 0px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: white;
+      color: black;
+      padding: 15px 25px;
+      border: 3px solid black;
+      font-size: 1.5rem;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      animation: bounce 3s ease-in-out infinite;
+    }
 
-      #play-button {
-        bottom: 150px;
+    @keyframes bounce {
+      0% {
+        transform: translateX(-50%) translateY(0);
       }
-
-      .side-img {
-        display: none;
+      50% {
+        transform: translateX(-50%) translateY(-15px);
+      }
+      100% {
+        transform: translateX(-50%) translateY(0);
       }
     }
 
     audio {
       display: none;
     }
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+      #character {
+        position: absolute;
+        bottom: -70px;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 140%;
+        max-height: 130%;
+      }
+
+      #textbox {
+        font-size: 1.2rem;
+        padding: 15px 20px;
+        width: 340px;
+        max-width: none;
+        text-align: center;
+        white-space: normal;
+        line-height: 1.6;
+        bottom: 450px;
+        left: 60%;
+        transform: translateX(-50%);
+      }
+
+      #play-button {
+        position: absolute;
+        bottom: 260px; /* Move it higher */
+        left: 85%; /* Move it to the right */
+        transform: translateX(-50%);
+        background-color: #fff;
+        color: #000;
+        border: none;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        font-size: 3rem; /* Increase the size of the play button */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      }
+
+      #play-button:hover {
+        background-color: #f1f1f1;
+      }
+
+      #play-button:before {
+        content: '▸'; /* Play icon */
+        font-size: 3rem; /* Increased font size */
+      }
+    }
+
+    /* PC adjustments */
+    @media (min-width: 769px) {
+      #textbox {
+        font-size: 2rem;
+        padding: 20px 40px;
+        max-width: 80%;
+        left: 40%;
+        transform: translateX(-50%);
+      }
+
+      #play-button {
+        position: absolute;
+        bottom: 15px;
+        left: calc(50% + 150px); /* Positioned to the right of the text box */
+        background-color: #fff;
+        color: #000;
+        border: none;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        font-size: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      }
+
+      #play-button:hover {
+        background-color: #f1f1f1;
+      }
+
+      #play-button:before {
+        content: '▸'; /* Play icon */
+        font-size: 3rem; /* Increased font size */
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Layer 1 -->
-  <img src="YourFillerExtra.png" class="extra-filler" />
+  <img id="character" src="YourCharacterImage.png" alt="Character">
 
-  <!-- Layer 2 -->
-  <img src="YourFillerImage.png" class="side-img left-img" />
-  <img src="YourFillerImage.png" class="side-img right-img" />
+  <div id="textbox">
+    <div>Welcome!</div>
+    <div>Please enjoy your stay and relax...</div>
+  </div>
 
-  <!-- Layer 3 -->
-  <div class="background"></div>
-
-  <!-- Text -->
-  <div id="textbox">The end is near</div>
-
-  <!-- Play Button -->
+  <!-- Play button -->
   <button id="play-button" onclick="playMusic()"></button>
 
-  <!-- Music -->
   <audio id="bg-audio" loop>
-    <source src="videoplayback.mp3" type="audio/mp3" />
+    <source src="videoplayback.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
   <script>
     const audio = document.getElementById('bg-audio');
+    const playButton = document.getElementById('play-button');
+
+    // Set initial volume
+    audio.volume = 0.3;
+
+    // Play music when button is clicked
     function playMusic() {
       audio.play();
     }
-
-    window.onload = function () {
-      audio.volume = 0.3;
-      playMusic();
-    };
   </script>
 </body>
 </html>
